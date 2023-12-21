@@ -70,7 +70,7 @@ docker-compose exec web bash
 運行以下命令：
 
 ````bash
-python manage.py makemigrations
+python manage.py makemigrations myapp
 ````
 
 ###應用遷移文件
