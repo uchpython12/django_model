@@ -13,6 +13,7 @@ COPY . /app
 
 # 安装依赖
 RUN pip install --no-cache-dir -r /app/requirements.txt
+RUN pip install gunicorn
 
-# 告诉 Docker 运行服务的命令
-CMD ["python", "/app/myproject/manage.py", "runserver", "0.0.0.0:8000"]
+# 告诉 Docker 运行 Gunicorn 服务器的命令
+CMD ["gunicorn", "myproject.wsgi:application", "--bind", "0.0.0.0:8000"]
