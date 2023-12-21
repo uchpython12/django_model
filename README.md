@@ -73,13 +73,13 @@ cd myproject/
 运行以下命令：
 
 ```bash
-docker-compose run web python manage.py makemigrations
+python manage.py makemigrations
 ```
 
 ### 应用迁移文件
 应用迁移文件将实际更新数据库结构以与模型保持一致。运行以下命令：
 ```bash
-docker-compose run web python manage.py migrate
+python manage.py migrate
 ```
 
 ## 貢獻

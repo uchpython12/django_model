@@ -37,6 +37,8 @@ import os
 # 设置静态文件的收集路径
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+# 设置 DJANGO_SETTINGS_MODULE
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'myapp.settings')
 
 INSTALLED_APPS = [
     "django.contrib.admin",
