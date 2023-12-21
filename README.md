@@ -70,13 +70,13 @@ docker-compose exec web bash
 運行以下命令：
 
 ````bash
-python 管理.py makemigrations
+python manage.py makemigrations
 ````
 
 ###應用遷移文件
 應用遷移檔案將實際更新資料庫結構以與模型保持一致。以下運行命令：
 ````bash
-python 管理.py 遷移
+ python manage.py migrate
 ````
 
 ## 貢獻
