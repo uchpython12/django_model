@@ -21,3 +21,12 @@ services:
       - '8000:8000'
     depends_on:
       - db
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - '8080:80'
+    environment:
+      PMA_HOST: db  # 这里设置 phpMyAdmin 连接的 MySQL 主机名，与上面的服务名称对应
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}  # MySQL 的 root 密码，与上面的服务对应

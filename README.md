@@ -56,6 +56,24 @@ MySQL 數據庫的配置可以在 `docker-compose.yml` 文件中找到。根據�
 - 在 Docker 容器內使用 Django 管理命令，例如 `docker-compose exec web python manage.py <命令>`。
 - 根據你的需求自定義 Django 專案。
 
+## 迁移数据库
+
+在启动 Django 项目时，需要进行数据库迁移以确保模型与数据库结构同步。以下是必要的步骤：
+
+### 创建迁移文件
+
+在开发或更新模型后，需要创建迁移文件来描述数据库的更改。运行以下命令：
+
+```bash
+docker-compose run web python manage.py makemigrations
+```
+
+### 应用迁移文件
+应用迁移文件将实际更新数据库结构以与模型保持一致。运行以下命令：
+```bash
+docker-compose run web python manage.py migrate
+```
+
 ## 貢獻
 
 歡迎通過派生存儲庫並創建拉取請求來為此項目作出貢獻。
