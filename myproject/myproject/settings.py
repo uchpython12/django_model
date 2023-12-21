@@ -29,6 +29,14 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+# 导入必要的模块
+import os
+
+# 其他设置...
+
+# 设置静态文件的收集路径
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
