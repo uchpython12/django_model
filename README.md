@@ -12,8 +12,8 @@
 1. 克隆存儲庫：
 
     ```bash
-    git clone https://github.com/你的用戶名/你的專案.git
-    cd 你的專案
+    git clone https://github.com/uchpython12/django_model.git
+    cd django_model
     ```
 
 2. 構建 Docker 容器：
@@ -56,31 +56,28 @@ MySQL 數據庫的配置可以在 `docker-compose.yml` 文件中找到。根據�
 - 在 Docker 容器內使用 Django 管理命令，例如 `docker-compose exec web python manage.py <命令>`。
 - 根據你的需求自定義 Django 專案。
 
-## 迁移数据库
+## 遷移資料庫
 
-在启动 Django 项目时，需要进行数据库迁移以确保模型与数据库结构同步。以下是必要的步骤：
-
+在啟動 Django 專案時，需要進行資料庫遷移以確保模型與資料庫結構同步。以下是必要的步驟：
 ### 进入容器： 
 ```bash
 docker-compose exec web bash
-cd myproject/
-
 ```
 在容器内，运行以下命令来创建迁移文件：
-### 创建迁移文件
+###建立遷移文件
 
-在开发或更新模型后，需要创建迁移文件来描述数据库的更改。
-运行以下命令：
+在開發或更新模型後，需要建立遷移檔案來描述資料庫的變更。
+運行以下命令：
 
-```bash
-python manage.py makemigrations
-```
+````bash
+python 管理.py makemigrations
+````
 
-### 应用迁移文件
-应用迁移文件将实际更新数据库结构以与模型保持一致。运行以下命令：
-```bash
-python manage.py migrate
-```
+###應用遷移文件
+應用遷移檔案將實際更新資料庫結構以與模型保持一致。以下運行命令：
+````bash
+python 管理.py 遷移
+````
 
 ## 貢獻
 
