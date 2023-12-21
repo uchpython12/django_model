@@ -16,4 +16,5 @@ RUN pip install --no-cache-dir -r /app/requirements.txt
 RUN pip install gunicorn
 
 # 告诉 Docker 运行 Gunicorn 服务器的命令
-CMD ["gunicorn", "myproject.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "myproject.wsgi:application", "--bind", "0.0.0.0:8000", "--reload"]
+
