@@ -1,0 +1,16 @@
+<!-- templates/read_data.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Read Data</title>
+</head>
+<body>
+    <h1>Data from YourModel</h1>
+    <ul>
+        {% for item in data %}
+            <li>Name: {{ item.name }}, Age: {{ item.age }}, Email: {{ item.email }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
