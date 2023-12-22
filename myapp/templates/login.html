@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <title>登录</title>
+    <title>登入</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- 可以在此处添加自定义 CSS 样式 -->
@@ -13,19 +13,19 @@
 <body>
 {% include 'navbar.html' %}
 <div class="container">
-    <h2>登录</h2>
+    <h2>登入</h2>
 
     <form method="post">
         {% csrf_token %}
         <div class="form-group">
-            <label for="username">用户名：</label>
+            <label for="username">使用者名稱：</label>
             <input type="text" class="form-control" id="username" name="username">
         </div>
         <div class="form-group">
-            <label for="password">密码：</label>
+            <label for="password">密碼：</label>
             <input type="password" class="form-control" id="password" name="password">
         </div>
-        <button type="submit" class="btn btn-primary">登录</button>
+        <button type="submit" class="btn btn-primary">登入</button>
     </form>
 </div>
 

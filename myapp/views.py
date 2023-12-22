@@ -36,27 +36,30 @@ def register(request):
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']
+            # 使用 Django 內建的 User model 創建新用戶
             User.objects.create_user(username=username, password=password)
-            return redirect('login')
+            return redirect('login')  # 註冊成功後重定向到登入頁面
     else:
-        form = RegistrationForm()  # 创建一个空的表单
+        form = RegistrationForm()  # 創建一個空的表單
+
+    return render(request, 'register.html', {'form': form})
 
     return render(request, 'register.html', {'form': form})
 
 def login(request):
     if request.method == 'POST':
-        # 处理表单提交
+        # 處理表單提交
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         if user is not None:
             auth_login(request, user)
-            # 登录成功后的重定向或其他操作
-            return redirect('dashboard')  # 替换为你的登录成功后的 URL 名称
+            # 登錄成功後的重定向或其他操作
+            return redirect('/')  # 替換為你的登入成功後的 URL 名稱
         else:
+            # 處理登入失敗的情況
+            # 可以在此處添加錯誤提示或其他處理
             pass
-            # 处理登录失败的情况
-            # ...
     else:
-        # 处理 GET 请求的情况
+        # 處理 GET 請求的情況
         return render(request, 'login.html')

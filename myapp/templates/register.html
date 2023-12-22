@@ -19,16 +19,12 @@
     <form method="post">
         {% csrf_token %}
         <div class="form-group">
-            <label for="name">姓名：</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <label for="username">用戶名：</label>
+            <input type="text" class="form-control" id="username" name="username">
         </div>
         <div class="form-group">
-            <label for="age">年齡：</label>
-            <input type="text" class="form-control" id="age" name="age">
-        </div>
-        <div class="form-group">
-            <label for="email">電子郵件：</label>
-            <input type="text" class="form-control" id="email" name="email">
+            <label for="password">密碼：</label>
+            <input type="password" class="form-control" id="password" name="password">
         </div>
         <button type="submit" class="btn btn-primary">提交</button>
     </form>
