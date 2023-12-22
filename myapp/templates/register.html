@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>註冊頁面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 加載 Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 自定義樣式 */
+        /* 這裡可以添加自定義的 CSS 樣式 */
+    </style>
+</head>
+<body>
+    {% include 'navbar.html' %}
+<div class="container">
+    <h2>註冊</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name">姓名：</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="form-group">
+            <label for="age">年齡：</label>
+            <input type="text" class="form-control" id="age" name="age">
+        </div>
+        <div class="form-group">
+            <label for="email">電子郵件：</label>
+            <input type="text" class="form-control" id="email" name="email">
+        </div>
+        <button type="submit" class="btn btn-primary">提交</button>
+    </form>
+</div>
+
+<!-- 加載 Bootstrap 的 JavaScript 文件 -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
