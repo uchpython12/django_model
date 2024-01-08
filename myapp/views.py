@@ -10,6 +10,10 @@ from django.contrib.auth.models import User
 from .forms import RegistrationForm
 from django.contrib.auth import authenticate, login as auth_login
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import Group
+
+from django.contrib.auth.decorators import login_required
+
 def index(request):
     return JsonResponse({'message': 'Welcome to the homepage!'})
 
@@ -19,6 +23,9 @@ def other_view(request):
 def home(request):
     return render(request, 'home.html')
 
+@login_required
+def success(request):
+    return render(request, 'success.html')
 # views.py
 
 
@@ -30,21 +37,33 @@ def read_data(request):
     # new_instance.save()  # 保存实例到数据库中
     return render(request, 'read_data.html', {'data': data})
 
+
+from django.contrib.auth.models import User
+from django.db import IntegrityError
+
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
+
 def register(request):
     if request.method == 'POST':
-        form = RegistrationForm(request.POST)
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            # 使用 Django 內建的 User model 創建新用戶
-            User.objects.create_user(username=username, password=password)
-            return redirect('login')  # 註冊成功後重定向到登入頁面
+        username = request.POST['username']
+        password = request.POST['password']
+        group_id = request.POST['group']
+
+        # 检查用户名是否已存在
+        if User.objects.filter(username=username).exists():
+            error_message = "该用户名已被使用，请选择其他用户名。"
+            groups = Group.objects.all()
+            return render(request, 'register.html', {'groups': groups, 'error_message': error_message})
+
+        # 其他注册逻辑...
     else:
-        form = RegistrationForm()  # 創建一個空的表單
+        groups = Group.objects.all()
+        return render(request, 'register.html', {'groups': groups})
 
-    return render(request, 'register.html', {'form': form})
 
-    return render(request, 'register.html', {'form': form})
+
+from django.contrib import messages
 
 def login(request):
     if request.method == 'POST':
@@ -58,8 +77,9 @@ def login(request):
             return redirect('/')  # 替換為你的登入成功後的 URL 名稱
         else:
             # 處理登入失敗的情況
-            # 可以在此處添加錯誤提示或其他處理
-            pass
+            # 添加錯誤提示
+            messages.error(request, '登录失败，请检查用户名和密码是否正确')
+            return render(request, 'login.html')
     else:
         # 處理 GET 請求的情況
         return render(request, 'login.html')

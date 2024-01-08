@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>登入</title>
+
+        <!-- 添加显示消息的部分 -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- 可以在此处添加自定义 CSS 样式 -->

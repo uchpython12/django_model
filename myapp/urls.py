@@ -9,5 +9,6 @@ urlpatterns = [
     path('read/', views.read_data, name='read_data'),
     path('register/', views.register, name='register'),
     path('login/', views.login, name='login'),
+    path('success/', views.success, name='success'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),  # 登出的 URL 配置
 ]

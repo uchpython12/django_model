@@ -13,25 +13,41 @@
 </head>
 <body>
     {% include 'navbar.html' %}
-<div class="container">
-    <h2>註冊</h2>
+    <div class="container">
+        <h2>註冊</h2>
 
-    <form method="post">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="username">用戶名：</label>
-            <input type="text" class="form-control" id="username" name="username">
-        </div>
-        <div class="form-group">
-            <label for="password">密碼：</label>
-            <input type="password" class="form-control" id="password" name="password">
-        </div>
-        <button type="submit" class="btn btn-primary">提交</button>
-    </form>
-</div>
+        <!-- 错误消息 -->
+        {% if error_message %}
+            <div class="alert alert-danger" role="alert">
+                {{ error_message }}
+            </div>
+        {% endif %}
 
-<!-- 加載 Bootstrap 的 JavaScript 文件 -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">用戶名：</label>
+                <input type="text" class="form-control" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="password">密碼：</label>
+                <input type="password" class="form-control" id="password" name="password">
+            </div>
+            <!-- 添加用户组选择下拉菜单 -->
+            <div class="form-group">
+                <label for="group">选择用户组：</label>
+                <select class="form-control" id="group" name="group">
+                    {% for group in groups %}
+                        <option value="{{ group.id }}">{{ group.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">提交</button>
+        </form>
+    </div>
+
+    <!-- 加載 Bootstrap 的 JavaScript 文件 -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
 </html>
